@@ -1,0 +1,40 @@
+<div class="products-container">
+    <div class="sidebar">
+        <div class="title">
+            Product
+        </div>
+        <div>  
+            <input  required #productid="ngModel" type="text"  [(ngModel)]="product.id"
+            name="productid"  placeholder="Enter Product Name"><br><br>
+            
+             <button color="primary" class="btn btn-dark" (click)="search(productid.value)" aria-setsize="2%">Search</button>
+             &nbsp;  
+             <button *ngIf="adminLoggedIn" color="primary" class="btn btn-outline-info"  (click)="addProduct()" aria-setsize="2%">AddProduct</button> 
+        </div>
+        <br>
+    </div>
+
+
+    <div class="body">
+        <mat-card class="example-card" *ngFor="let u of productList; index as i" >
+            <div class="thumbnail-image">
+                <img src="{{u.imageUrl}}" class="productImg" mat-card-image />
+            </div>
+            <mat-card-content>
+                <p><b>{{u.productName | uppercase}}</b></p>
+                <p><b>{{u.description | uppercase}}</b></p>
+                <p><b>{{u.price| currency}}</b></p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button *ngIf="!adminLoggedIn" mat-button mat-stroked-button color="primary" class="button" (click)="addToCart()">
+                    ADD TO CART
+                </button>
+                <button *ngIf="adminLoggedIn" mat-button mat-stroked-button color="primary" class="button" (click)="updateProduct(u)">
+                    UPDATE PRODUCT
+                </button>
+                <button mat-button>SHARE
+                </button>
+            </mat-card-actions>
+        </mat-card>
+   </div>
+   </div>

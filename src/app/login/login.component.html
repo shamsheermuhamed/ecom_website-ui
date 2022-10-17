@@ -1,0 +1,26 @@
+<div class="example-container">
+  <h2 style="font-weight: 100; text-align: center;">Please sign in</h2>
+ 
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input matInput  name= "username" [(ngModel)]="users1.username" placeholder="Enter Your Username">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input  matInput name="password" [(ngModel)]="users1.password"  placeholder="Enter Password">
+  </mat-form-field>
+  <!--  -->
+  <button mat-stroked-button color="primary"  (click)="openForgotDialog()">
+    <u>Forgot Password ?</u>
+  </button><br>
+  <!--  -->
+  <button mat-button mat-raised-button color="primary" class="buy-now-button space" (click)="signIn()">LOGIN
+  </button>
+
+ 
+  <label style="text-align: center; margin-top: 5px; color:gray">Or</label>
+  <button mat-button mat-stroked-button color="primary" class="button" (click)="signUp()">
+    SIGNUP NOW
+  </button>
+</div>
+
