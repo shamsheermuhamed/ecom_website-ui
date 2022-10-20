@@ -7,7 +7,7 @@
 
 
         <div class="img">
-
+            
         </div>
         <div class="name">
             Product
@@ -15,9 +15,9 @@
         <div class="price">
             Price
         </div>
-        <div class="quantity">
+        <!-- <div class="quantity">
             Quantity
-        </div>
+        </div> -->
         <div class="total">
             Total
         </div>
@@ -26,30 +26,32 @@
         </div>
     </div>
 
-    <div class="body" *ngFor="let item of cart">
+    <div class="body" *ngFor="let item of productList">
 
         <div class="img">
 
-            <img class="productImg" src="{{item.image}}" alt="Photo of a Shiba Inu">
+            <img class="productImg" src="{{item.imageUrl}}" alt="Photo of a Shamsheer">
         </div>
         <div class="name">
-            <h3> NIKE FREE RN 2019 ID</h3>
+            <h3> {{item.description | uppercase}}</h3>
             <p> Far far away, behind the word mountains, far from the countries</p>
         </div>
         <div class="price">
-            $4.90
+           &nbsp;&nbsp; {{item.price | currency}}
         </div>
-        <div class="quantity">
+        <!-- <div class="quantity">
             <mat-icon class="close-icon">add</mat-icon><input
                 style="height: 20px; margin-right: 5px; text-align: center;" type="text" size="1" value="1" />
             <mat-icon class="close-icon">remove</mat-icon>
-        </div>
+        </div> -->
         <div class="total">
-            $4.90
+            &nbsp;&nbsp; {{item.price | currency}}
 
         </div>
-        <div class="close">
-            <mat-icon class="close-icon">close</mat-icon>
+        <div class="close">   
+            <button mat-stroked-button color="primary" class="button full-button"(click)="deleteCartProduct(item.id)">
+                <mat-icon class="close-icon">close</mat-icon>
+            </button>
         </div>
 
     </div>
@@ -62,16 +64,16 @@
         <table style="width: 100%">
             <tr>
                 <td>Subtotal</td>
-                <td>$20.60</td>
+                <td>{{subTotal | currency}}</td>
             </tr>
             <tr>
                 <td>Delivery</td>
-                <td>$0.60</td>
+                <td>{{deliveryCharge | currency}}</td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>Discount</td>
                 <td>$0.60</td>
-            </tr>
+            </tr> -->
             <tr>
                 <td colspan="2">
                     <hr>
@@ -80,11 +82,11 @@
             <tr>
                     
                 <td>Total</td>
-                <td><b>$10.60</b></td>
+                <td><b>{{grandTotal | currency}}</b></td>
             </tr>
         </table>
         <div class="checkout-button">
-            <button mat-stroked-button color="primary" class="button full-button">PROCEED TO CHECKOUT</button>
+            <button *ngIf="orderPresent" mat-stroked-button color="primary" class="button full-button"(click)="placeOrder()">PLACE ORDER</button>
         </div>
     </div>
 

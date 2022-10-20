@@ -17,6 +17,8 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { SignupComponent } from './signup/signup.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { UpdateproductComponent } from './updateproduct/updateproduct.component';
+import { MyordersComponent } from './myprofile/myorders/myorders.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {
@@ -28,7 +30,7 @@ const routes: Routes = [
     component: ProductsComponent
   },
   {
-    path: 'product/:id',
+    path: 'singleproduct',
     component: SingleProductComponent
   },
   {
@@ -47,6 +49,10 @@ const routes: Routes = [
       {
         path: 'address',
         component: ManageAddressComponent
+      },
+      {
+        path: 'myorders',
+        component: MyordersComponent
       },
       {
         path: 'notifications',
@@ -93,6 +99,10 @@ const routes: Routes = [
   {
     path: 'updateproduct',
     component: UpdateproductComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
   },
 ];
 

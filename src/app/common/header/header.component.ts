@@ -50,7 +50,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.loginService.logout();
     this.loggedIn=false;
-    this.router.navigate(['home']);
-    // window.location.href="/home";
+    window.location.href="/home";
   }
 }

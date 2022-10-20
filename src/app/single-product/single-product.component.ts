@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Route } from '@angular/compiler/src/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from '../entity/product';
 
 @Component({
   selector: 'app-single-product',
@@ -9,17 +10,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./single-product.component.scss']
 })
 export class SingleProductComponent implements OnInit {
-  simillarProducts = [];
-  product: any;
+
+  product:Product=new Product
+  simillarProducts:Product[]=[];
   constructor(private productService: ProductService, private route: ActivatedRoute) {
-    this.simillarProducts = this.productService.getSimillarProducts();
-    this.productService.getSingleProduct(Number(this.route.snapshot.params.id)).subscribe(res => {
-      this.product = res;
-    });
+
   }
 
   ngOnInit() {
+    this.productService.getProductById(localStorage.getItem("product")).subscribe((response:any) => {
+       this.product=response;
+    });
 
+    this.productService.getProductByName(this.product.productName).subscribe((response:any) => {
+      console.log(this.product.productName)
+      this.simillarProducts= response as Product[];
+      console.log(this.simillarProducts)
+   });
   }
 
   messages = [
@@ -47,11 +54,11 @@ export class SingleProductComponent implements OnInit {
       time: '9.30 AM'
     }
   ];
-  foods = [
-    { value: 'steak-0', viewValue: 'Small' },
-    { value: 'pizza-1', viewValue: 'Medium' },
-    { value: 'tacos-2', viewValue: 'Large' }
-  ];
+  // foods = [
+  //   { value: 'steak-0', viewValue: 'Small' },
+  //   { value: 'pizza-1', viewValue: 'Medium' },
+  //   { value: 'tacos-2', viewValue: 'Large' }
+  // ];
 
 
 }

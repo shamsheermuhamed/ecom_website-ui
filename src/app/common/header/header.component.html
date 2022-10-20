@@ -28,8 +28,7 @@
             <ul class="list">
                 <li class="contain" [routerLink]="['/home']" routerLinkActive="active"><span>HOME</span></li>
                 <li class="contain" [routerLink]="['/products']" routerLinkActive="active"><span>PRODUCTS</span></li>
-                <!-- <li class="contain" [routerLink]="['/images']" routerLinkActive="active"><span>IMAGES</span></li> -->
-                <li class="contain" [routerLink]="['/contact-us']" routerLinkActive="active"><span>CONTACT-US</span>
+                <li class="contain" [routerLink]="['/contact']" routerLinkActive="active"><span>CONTACT-US</span>
                 </li>
 
                 <li class="contain" *ngIf="!loggedIn">
@@ -42,7 +41,7 @@
 
                     <div class="dropdown-content">
                         <a [routerLink]="['/myprofile']">My Profile</a>
-                        <a>Orders</a>
+                        <a [routerLink]="['/myprofile/myorders']">Orders</a>
                         <a>Wishlist</a>
                         <a>Notifications</a>
                         <a (click)="logout()">Logout</a>

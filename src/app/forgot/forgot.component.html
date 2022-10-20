@@ -8,11 +8,11 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>New Password</mat-label>
-        <input matInput  name= "password" [(ngModel)]="user.password" placeholder="Enter your new Password">
+        <input matInput type="password"  name= "password" [(ngModel)]="user.password" placeholder="Enter your new Password">
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" >
         <mat-label>Confirm Password</mat-label>
-        <input matInput  placeholder="re enter your Password">
+        <input matInput type="password" name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="re enter your Password">
       </mat-form-field>
     
       <button mat-button mat-raised-button color="primary" class="buy-now-button space" (click)="changePassword()">CHANGE NOW

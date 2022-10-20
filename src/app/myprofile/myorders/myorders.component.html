@@ -1,0 +1,33 @@
+
+    <div class="shopping-cart-conatiner">
+        <div class="header">
+            <div class="name">
+                Orderid
+            </div>
+            <div class="productNames">
+               Product Name       
+            </div>           
+            <div class="price">
+                Price
+            </div>
+            <div class="close">
+    
+            </div>
+        </div>
+    
+        <div class="body" *ngFor="let item of orders">
+            
+            <div class="name">
+                <p> {{item.orderId | uppercase}}</p>              
+            </div>
+            <div class="productNames" *ngFor="let i of item.productList">
+               <tr><td>{{i.productName}} </td> </tr>                   
+            </div>
+            <div class="price">              
+               <p>{{item.orderPrice | currency}} </p> 
+            </div>
+            <div class="close"> 
+                <button class="close">cancel</button>
+            </div>                        
+        </div>
+    </div>

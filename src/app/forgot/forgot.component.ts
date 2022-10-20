@@ -13,6 +13,7 @@ import { LoginComponent } from '../login/login.component';
 export class ForgotComponent implements OnInit {
 
   user:Users=new Users
+  confirmPassword:string;
   constructor(private router:Router, private loginService:LoginService,
     public dialog: MatDialog) { }
 
@@ -21,20 +22,28 @@ export class ForgotComponent implements OnInit {
 
   changePassword(){
     let credential={username:this.user.username,password:this.user.password}
-    this.loginService.changePassword(credential).subscribe(
-      (response: any) => {
-        alert(response.message);
-        console.log(response);
-        this.dialog.closeAll();
-        this.dialog.open(LoginComponent, {
+    console.log(credential.password+"hi");
+    console.log(this.confirmPassword)
+    if(credential.password!=this.confirmPassword){
+      alert("Password and confirm password does not match");
+    }
+    else{
+      this.loginService.changePassword(credential).subscribe(
+        (response: any) => {
+          alert(response.message);
+          console.log(response);
+          this.dialog.closeAll();
+          // this.dialog.open(LoginComponent, {
+          // });
+        },
+        (error)=>{
+          alert(error.error.message);
         });
-      },
-      (error)=>{
-        alert(error.error.message);
-      });
+    }
   }
 
   signUp(){
+    this.dialog.closeAll();
     this.router.navigate(['signup']);
   }
 

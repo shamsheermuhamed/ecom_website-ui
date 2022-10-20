@@ -1,0 +1,27 @@
+<div class="wrapper">
+    <div class="row">
+        <div class="card col-md-4 offset-md-4 shadow-lg p-3 mb-5 bg-white">
+            <h3 style="margin-top: 20px; font-size: x-large;">Contact Us</h3>
+
+            <div class="row">
+                First Name : <input (blur)="validatefirstName(); enableButton();" class="form-control" type="text" name="firstName" [(ngModel)]="firstName">
+                <small *ngIf="firstNameFlag" style="color: red;">Invalid First Name</small>
+            </div>
+            <div class="row">
+                Email : <input (blur)="validateEmail(); enableButton();" class="form-control" type="email" name="email" [(ngModel)]="email">
+                <br> <small *ngIf="emailFlag" style="color: red;">Invalid Email</small>
+            </div>
+            <div class="row">
+                description : <textarea class="form-control" name="description" [(ngModel)]="description"></textarea>
+                <br> <small  *ngIf="description.invalid && description.touched" style="color: red;">Invalid Description</small>
+            </div>
+            
+            <div class="row">
+                <button [disabled]="buttonFlag" class="regBtn btn btn-success" (click)="submitFeedback()">
+                        Submit Feedback
+                  </button>
+            </div>
+        </div>
+    </div>
+  </div>
+

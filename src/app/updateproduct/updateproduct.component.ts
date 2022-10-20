@@ -9,15 +9,22 @@ import { ProductService } from '../services/product.service';
 })
 export class UpdateproductComponent implements OnInit {
 
+  featuresList:Array<string>=[];
+  addFeatureflag:boolean=false;
+  showFeature:boolean=true;
   product:Product= new Product
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService) { 
+  
+  }
 
   updateProduct(){
+    
+    this.product.features=this.featuresList;
+    // console.log("hello"+ this.product)
     this.productService.updateProduct(this.product).subscribe(
       (response: any) => {
         console.log(response);
         alert(response.message)
-        // this.product=new Product;
       },
       error=>{
         alert(error.error.message);
@@ -25,6 +32,21 @@ export class UpdateproductComponent implements OnInit {
     );
   }
 
+  addFeature()
+  {
+    this.addFeatureflag=true;
+    this.showFeature=false;
+  }
+
+  OK(feature:string){
+    this.featuresList.push(feature);
+    this.addFeatureflag=false;
+    this.showFeature=true;
+  }
+
   ngOnInit() {  
-    console.log()
-      this.product=history.state.d
+      this.product=history.state.data;
+      this.featuresList=this.product.features;
+  }
+
+}

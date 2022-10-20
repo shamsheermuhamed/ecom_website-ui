@@ -21,7 +21,9 @@
                     <mat-icon>next_week</mat-icon>
                 </div>
                 <div class="title contain">
-                    MY ORDERS
+                    <a [routerLink]="['myorders']" routerLinkActive="active">
+                        MY ORDERS
+                    </a>                 
                 </div>
                 <div class="right-icon contain">
                     <mat-icon>chevron_right</mat-icon>
@@ -46,6 +48,7 @@
                         <a [routerLink]="['address']" routerLinkActive="active">
                             <li>Manage Address</li>
                         </a>
+                        
                     </ul>
                 </div>
             </div>

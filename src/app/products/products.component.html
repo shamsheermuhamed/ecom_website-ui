@@ -26,13 +26,15 @@
                 <p><b>{{u.price| currency}}</b></p>
             </mat-card-content>
             <mat-card-actions>
-                <button *ngIf="!adminLoggedIn" mat-button mat-stroked-button color="primary" class="button" (click)="addToCart()">
+                <button *ngIf="!adminLoggedIn" mat-button mat-stroked-button color="primary" class="button" (click)="addToCart(u.id)">
                     ADD TO CART
                 </button>
                 <button *ngIf="adminLoggedIn" mat-button mat-stroked-button color="primary" class="button" (click)="updateProduct(u)">
                     UPDATE PRODUCT
                 </button>
-                <button mat-button>SHARE
+                <button mat-button *ngIf="adminLoggedIn" (click)=deleteProduct(u.id)>DELETE
+                </button>
+                <button mat-button *ngIf="!adminLoggedIn">VIEW
                 </button>
             </mat-card-actions>
         </mat-card>

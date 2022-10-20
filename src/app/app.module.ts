@@ -59,6 +59,8 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { SignupComponent } from './signup/signup.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { UpdateproductComponent } from './updateproduct/updateproduct.component';
+import { MyordersComponent } from './myprofile/myorders/myorders.component';
+import { ContactComponent } from './contact/contact.component';
   
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { UpdateproductComponent } from './updateproduct/updateproduct.component'
     ForgotComponent,
     SignupComponent,
     AddproductComponent,
-    UpdateproductComponent
+    UpdateproductComponent,
+    MyordersComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

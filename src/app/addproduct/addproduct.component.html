@@ -1,64 +1,68 @@
-<div class="row">
+<div class="wrapper">
+    <div class="row">
         <div class="card col-md-4 offset-md-4 shadow-lg p-3 mb-5 bg-white">
-            <div class="container text-center mt">
-                <h4>Add Flight</h4>
-                <form #productform="ngForm">
-                    <div class="row">
-                        <label for="flighid" class="control-label">product name</label>
-                        <input required #productName="ngModel" type="text"  [(ngModel)]="product.productName"
-                            name="productName" />
-                        <div *ngIf="productName.invalid && productName.touched" class="alert alert-danger">product name required
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="description" class="control-label">Description</label>
-                        <input required #description="ngModel" type="text" [(ngModel)]="product.description"
-                            name="description" />
-                        <div *ngIf="description.invalid && description.touched" class="alert alert-danger">Description is
-                            required</div>
-                    </div>
-                    <div class="row">
-                        <label for="price" class="control-label">Price</label>
-                        <input required #price="ngModel" type="text" [(ngModel)]="product.price"
-                        price="flightto" />
-                        <div *ngIf="price.invalid && price.touched" class="alert alert-danger">Price is
-                            required</div>
-                    </div>
-                    <div class="row">
-                        <label for="features" class="control-label">features</label>
-                        <input required #features="ngModel" type="text"  [(ngModel)]="product.features"
-                            name="features" />
-                        <div *ngIf="features.invalid && features.touched" class="alert alert-danger">Features is
-                            required</div>
-                    </div>
-                    <div class="row">
-                        <label for="active" class="control-label">active</label>
-                        <input required #active="ngModel" type="text"  [(ngModel)]="product.active"
-                            name="active" />
-                        <div *ngIf="active.invalid && active.touched" class="alert alert-danger">Active status required
-                        </div>
-                    </div>
+            <h3 style="margin-top: 20px; font-size: x-large;">Add Product</h3>
+            <div class="row">
+                Product Name : <input required #productName="ngModel" class="form-control" type="text" name="productName" [(ngModel)]="product.productName">
+                <small *ngIf="productName.invalid && productName.touched" style="color: red;">Add product name</small>
+            </div>
+            <div class="row">
+                description : <input required #description="ngModel" class="form-control" type="text" name="description" [(ngModel)]="product.description">
+                <small *ngIf="description.invalid && description.touched" style="color: red;">Add description</small>
+            </div>
+            <div class="row">
+                price : <input required #price="ngModel" class="form-control" type="text" name="price" [(ngModel)]="product.price">
+                <small *ngIf="price.invalid && price.touched" style="color: red;">Add Price</small>
+            </div>
 
-                    <div class="row">
-                        <label for="stock" class="control-label">stock</label>
-                        <input required #stock="ngModel" type="text"  [(ngModel)]="product.unitStock"
-                            name="stock" />
-                        <div *ngIf="stock.invalid && stock.touched" class="alert alert-danger">No of stock required
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <label for="ImageUrl" class="control-label">ImageUrl</label>
-                        <input required #ImageUrl="ngModel" type="text"  [(ngModel)]="product.imageUrl"
-                            name="ImageUrl" />
-                        <div *ngIf="ImageUrl.invalid && ImageUrl.touched" class="alert alert-danger">ImageUrl required</div>
-                    </div>
 
-                    <br /><br />
-                    <button type="submit" [disabled]="!productform.form.valid" (click)="addProduct()"
-                        class="btn btn-dark">Submit</button>
-                    <!-- <button type="back" class="btn btn-dark"><a routerLink="/adminhome" href="#">Back</a></button> -->
-                </form>
+            <div class="row">
+                Features : &nbsp; <Button name="button"  class="btn btn-dark" (click)="addFeature()">Add Feature</Button>
+                
+            </div>
+
+            <div>
+                <div *ngIf="addFeatureflag">
+                    <div class="row">
+                        <input name="feature" #feature="ngModel" [(ngModel)]="product.features" type="text"   placeholder="feature" ><br>          
+                    </div>
+                    <button value="OK" (click)="OK(feature.value)">Add</button>
+                </div>
+            </div>
+            <br><br>
+            <div>
+                <table *ngIf="showFeature" align="center">
+                    <tr *ngFor="let u of featuresList; index as i">
+                        <th >{{u}}</th>
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+
+
+
+            <div class="row">
+                active : <input required #active="ngModel" class="form-control" type="text" name="active" [(ngModel)]="product.active">
+                <small *ngIf="active.invalid && active.touched" style="color: red;">Add Active status</small>
+            </div>
+            <div class="row">
+                unitStock : <input required #unitStock="ngModel" class="form-control" type="text" name="unitStock" [(ngModel)]="product.unitStock">
+                <small *ngIf="unitStock.invalid && unitStock.touched" style="color: red;">Add available stocks</small>
+            </div>
+            <div class="row">
+                imageUrl : <input required #imageUrl="ngModel" class="form-control" type="text" name="imageUrl" [(ngModel)]="product.imageUrl">
+                <small *ngIf="imageUrl.invalid && imageUrl.touched" style="color: red;">Add image url</small>
+            </div>
+            <div class="row">
+                <button [disabled]="buttonFlag" class="regBtn btn btn-success" (click)="addProduct()">
+                    Add product
+                  </button>
             </div>
         </div>
-</div>
+    </div>
+  </div>
+

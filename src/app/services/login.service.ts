@@ -69,8 +69,8 @@ export class LoginService {
     return true;
   }
 
-  // getUserId(){
-  //   return localStorage.getItem("id");
-  // }
+  getUserId(){
+    return localStorage.getItem("id");
+  }
 
 }
